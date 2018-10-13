@@ -59,14 +59,14 @@ module.exports = function (app,io){
                                         if (err) console.log(err);
                                         
                                         //Create a directory if it doesn't already exist
-                                        var dir = "./client/build/games/" + game.id
+                                        var dir = "./client/build/assets/games/" + game.id
                                         if (!fs.existsSync(dir)){
                                             console.log('path does not exist \n creating newpath')
                                             fs.mkdirSync(dir);
                                         }
                 
                                         //Unzip the file to target directory
-                                        var target = path.join(__dirname,'../client/build/games/' + game.id)
+                                        var target = path.join(__dirname,'../client/build/assets/games/' + game.id)
                                         extract(newpath,{dir:target},function(err){
                                             console.log('extracting to ', target)
                                             if(err) console.log(err);

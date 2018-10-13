@@ -68,7 +68,7 @@ class Game extends Component{
                             id="gameView"
                             height="500"
                             width="680"
-                            src={'/games/'+this.props.match.params.id}
+                            src={'/assets/games/'+this.props.match.params.id}
                             allowFullScreen></iframe>
                     
                         <Chatroom gameId = {this.props.match.params.id} gameInfo={this.state} />
