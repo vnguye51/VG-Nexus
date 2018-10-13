@@ -307,6 +307,7 @@ module.exports = function (app,io){
 
 
     app.get('/api/game/:id', function(req,res){
+        console.log('grab game!')
         //Grab game data with :id
         db.Game.findOne({
             where:{

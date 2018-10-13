@@ -82,6 +82,13 @@ class Home extends React.Component{
       <div>
           <div className='homerow'>
             <div className='categoryHeader'>Featured</div>
+            <iframe title="gamewindow"
+                            scrolling="no"
+                            id="gameView"
+                            height="500"
+                            width="680"
+                            src='localhost:3001/a'
+                            allowFullScreen></iframe>
             <div id='featured'></div>
           </div>
           

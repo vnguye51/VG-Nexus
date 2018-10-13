@@ -26,7 +26,7 @@ class App extends Component {
         <NavTabs />
         <Container>
           <Route exact path="/" component={Home} />
-          <Route path="/all" component={ChooseGame} />
+          <Route exact path="/all" component={ChooseGame} />
           <Route exact path="/upload" component={Form} />
           <Route exact path="/game" component={Game} />
           <Route exact path='/login_signup' component={LoginSignup} />
