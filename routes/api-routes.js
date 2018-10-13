@@ -50,7 +50,7 @@ module.exports = function (app,io){
                                 var thumbnailPath = files.thumbnail.path;
                                 //Create a newpath to store the file at
                                 var newpath = path.join(__dirname, "../" + files.filetoupload.name)
-                                var newThumbnailPath = path.join(__dirname, '../client/public/assets/gameThumbnails/' + game.id )
+                                var newThumbnailPath = path.join(__dirname, '../client/build/assets/gameThumbnails/' + game.id )
                                 fs.rename(thumbnailPath,newThumbnailPath, function(err) {
                                     //Rename thumbnail
                                     // if(err) throw err;
@@ -59,14 +59,14 @@ module.exports = function (app,io){
                                         if (err) console.log(err);
                                         
                                         //Create a directory if it doesn't already exist
-                                        var dir = "./client/public/games/" + game.id
+                                        var dir = "./client/build/games/" + game.id
                                         if (!fs.existsSync(dir)){
                                             console.log('path does not exist \n creating newpath')
                                             fs.mkdirSync(dir);
                                         }
                 
                                         //Unzip the file to target directory
-                                        var target = path.join(__dirname,'../client/public/games/' + game.id)
+                                        var target = path.join(__dirname,'../client/build/games/' + game.id)
                                         extract(newpath,{dir:target},function(err){
                                             console.log('extracting to ', target)
                                             if(err) console.log(err);
@@ -127,7 +127,7 @@ module.exports = function (app,io){
             form.parse(req,function(err,fields,files){
                 if(err) throw err;
                 var oldPath = files.profilephoto.path;
-                var newPath = path.join(__dirname, '../client/public/assets/userThumbnails/' + req.user.id )
+                var newPath = path.join(__dirname, '../client/build/assets/userThumbnails/' + req.user.id )
                 fs.rename(oldPath,newPath, function(err) {
                     if(err) throw err
                 })
@@ -144,8 +144,8 @@ module.exports = function (app,io){
             postBanner: req.body.postBanner
           }).then(function(user) {
             var random = Math.floor(Math.random()*9) + 1
-            var userImage = path.join(__dirname, '../client/public/assets/userThumbnails/Default'+random+'.png')
-            var userImageCopy = path.join(__dirname, '../client/public/assets/userThumbnails/' + user.id)
+            var userImage = path.join(__dirname, '../client/build/assets/userThumbnails/Default'+random+'.png')
+            var userImageCopy = path.join(__dirname, '../client/build/assets/userThumbnails/' + user.id)
             fs.createReadStream(userImage).pipe(fs.createWriteStream(userImageCopy));
             res.redirect(307, "/api/login");
         }).catch(function(err) {
